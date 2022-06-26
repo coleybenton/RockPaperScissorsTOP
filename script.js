@@ -93,48 +93,32 @@ Pl: Okay so we're going create the function and call it playRound. It will take 
 Ps:
 - create function playRound w/ parameters (playerSelection, computerSelection)
 - inside function: playerSelection equals toLowerCase (prompt with placeholder string "Please enter: rock, paper, or scissors")
-- switch statement (playerSelection, computerSelection)
-  - case (rock, rock || paper, paper || scissors, scissors): return "tied" break;
-  - case (rock, paper): return "Lose! Paper beats rock" break;
-  - case (rock, scissors): return "Win! Rock beats scissors" break;
-  - case (paper, rock): return "Win! Paper beats rock" break;
-  - case (paper, scissors): return "Lose! Scissors beats paper" break;
-  - case (scissors, rock): return "Lose! Rock beats scissors" break;
-  - case (scissors, paper): return "Win! Scissors beats paper" break;
-  - default: return "Please enter rock, paper, or scissors!" break;
+- if else statements for each outcome 
 
 
 code:*/
 
 function playRound(playerSelection, computerSelection) {
   playerSelection = prompt("Please enter: rock, paper, or scissors").toLowerCase();
-  switch (playerSelection, computerSelection) {
-    case ("rock", "rock" || "paper", "paper" || "scissors", "scissors"):
-      return "tied"; 
-      break;
-    case ("rock", "paper"): 
-      return "Lose! Paper beats rock"; 
-      break;
-    case ("rock", "scissors"): 
-      return "Win! Rock beats scissors"; 
-      break;
-    case ("paper", "rock"): 
-      return "Win! Paper beats rock";
-      break;
-    case ("paper", "scissors"): 
-      return "Lose! Scissors beats paper"; 
-      break;
-    case ("scissors", "rock"): 
-      return "Lose! Rock beats scissors"; 
-      break;
-    case ("scissors", "paper"): 
-      return "Win! Scissors beats paper"; 
-      break;
-    default: 
-      return "Please enter rock, paper, or scissors!";
-      break; 
+  if (playerSelection == computerSelection) {
+    return "Tied!";
+  } else if (playerSelection == "rock" && computerSelection == "scissors") {
+    return `Win! ${playerSelection} beats ${computerSelection}`;
+  } else if (playerSelection == "rock" && computerSelection == "paper") {
+    return `Lose! ${computerSelection} beats ${playerSelection}`;
+  } else if (playerSelection == "scissors" && computerSelection == "rock") {
+    return `Lose! ${computerSelection} beats ${playerSelection}`;
+  } else if (playerSelection == "scissors" && computerSelection == "paper") {
+    return `Win! ${playerSelection} beats ${computerSelection}`;
+  } else if (playerSelection == "paper" && computerSelection == "scissors") {
+    return `Lose! ${computerSelection} beats ${playerSelection}`;
+  } else if (playerSelection == "paper" && computerSelection == "rock") {
+    return `Win! ${playerSelection} beats ${computerSelection}`;
+  } else {
+    return "Please select rock, paper, or scissors!";
   }
 };
+
 /*
 ========================================================================
 test in console: 
@@ -149,4 +133,8 @@ rerunning tests
 test error rock is not defined
 updating switch and case to be strings 
 put semicolons for case codes
+rerunning tests
+
+test error default returned
+replacing switch statement with if/else statements
 rerunning tests
