@@ -101,6 +101,7 @@ code:*/
 function playRound(playerSelection, computerSelection) {
   playerSelection = prompt("Please enter: rock, paper, or scissors");
   playerSelection = playerSelection.toLowerCase();
+  computerSelection = computerPlay(); 
   if (playerSelection == computerSelection) {
     return "Tied!";
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
@@ -155,6 +156,12 @@ test success - computerPlay() function does not feed into playRound()...duh
 - attempting PAPER with "scissors" - success
 - attempting house with "scissors" - success
 
-tests success - playRound() outputs corresponding outputs as intended.
+Tests success - playRound() outputs corresponding outputs as intended.
 Tested other outcomes just to be safe - success! 
+Referenced computerPlay() function within playRound() by assigning to computerSelection
+Now we don't have to type parameters
+===============================================================================
+
+Step 3:
+
 */
