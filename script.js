@@ -99,23 +99,26 @@ Ps:
 code:*/
 
 function playRound(playerSelection, computerSelection) {
+  let win = "Win!"
+  let lose = "Lose!"
+  let tied = "Tied!"
   playerSelection = prompt("Please enter: rock, paper, or scissors");
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerPlay(); 
   if (playerSelection == computerSelection) {
-    return "Tied!";
+    return `${tied}`;
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
-    return `Win! ${playerSelection} beats ${computerSelection}`;
+    return `${win} ${playerSelection} beats ${computerSelection}`;
   } else if (playerSelection == "rock" && computerSelection == "paper") {
-    return `Lose! ${computerSelection} beats ${playerSelection}`;
+    return `${lose} ${computerSelection} beats ${playerSelection}`;
   } else if (playerSelection == "scissors" && computerSelection == "rock") {
-    return `Lose! ${computerSelection} beats ${playerSelection}`;
+    return `${lose} ${computerSelection} beats ${playerSelection}`;
   } else if (playerSelection == "scissors" && computerSelection == "paper") {
-    return `Win! ${playerSelection} beats ${computerSelection}`;
+    return `${win} ${playerSelection} beats ${computerSelection}`;
   } else if (playerSelection == "paper" && computerSelection == "scissors") {
-    return `Lose! ${computerSelection} beats ${playerSelection}`;
+    return `${lose} ${computerSelection} beats ${playerSelection}`;
   } else if (playerSelection == "paper" && computerSelection == "rock") {
-    return `Win! ${playerSelection} beats ${computerSelection}`;
+    return `${win} ${playerSelection} beats ${computerSelection}`;
   } else {
     return "Please select rock, paper, or scissors!";
   }
@@ -163,5 +166,18 @@ Now we don't have to type parameters
 ===============================================================================
 
 Step 3: Write a NEW function called game(). Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end. 
+
+RP: So we want to create a new function, named game() that references the playRound function. We want to go to a set 5 rounds, keep score, and reports a winner or loser at the end.
+
+Pl: Create the new function called game(), reference the playRound function. To go to 5 rounds, lets house this in a for loop, and assign each player a score variable that increments when they win, as well as returning a winner/loser string at the end of the 5 rounds.*
+
+Ps: 
+create function game()
+within game: for loop(to 5)
+within for loop: 
+  create variable playerScore
+  create variable computerScore
+  playRound()
+  
 
 */
