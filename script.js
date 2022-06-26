@@ -96,14 +96,16 @@ Ps:
 - if else statements for each outcome 
 
 
-code:*/
+code: */
+let win;
+let lose;
 
 function playRound(playerSelection, computerSelection) {
   playerSelection = prompt("Please enter: rock, paper, or scissors");
   playerSelection = playerSelection.toLowerCase();
-  computerSelection = computerPlay(); 
-  let win = `Win! ${playerSelection} beats ${computerSelection}`;
-  let lose = `Lose! ${computerSelection} beats ${playerSelection}`;
+  computerSelection = computerPlay();
+  win = `Win! ${playerSelection} beats ${computerSelection}`;
+  lose = `Lose! ${computerSelection} beats ${playerSelection}`;
   let tied = "Tied!";
   if (playerSelection == computerSelection) {
     return `${tied}`;
@@ -113,7 +115,8 @@ function playRound(playerSelection, computerSelection) {
     return lose;
   } else if (playerSelection == "scissors" && computerSelection == "rock") {
     return lose;
-  } else if (playerSelection == "scissors" && computerSelection == "paper") {	   return win; 
+  } else if (playerSelection == "scissors" && computerSelection == "paper") {
+    return win; 
   } else if (playerSelection == "paper" && computerSelection == "scissors") {
     return lose; 
   } else if (playerSelection == "paper" && computerSelection == "rock") {
@@ -177,6 +180,47 @@ within for loop:
   create variable playerScore
   create variable computerScore
   playRound()
-  if 
+  if (win): playerScore++
+  else if (lose): computerScore++
+  else return "No change in score"
+close for loop
+within game: if statement, increments score based on result & displays score every turn
 
+code:
 */
+
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+
+  for (let i = 0; i < 5; i++) {
+    let result = playRound();
+    if (result == win) {
+      playerScore++;
+      console.log("You won this round!");
+      console.log(`Your score: ${playerScore}`);
+      console.log(`Computer's score: ${computerScore}`);
+    } else if (result == lose) {
+      computerScore++;
+      console.log("You lost this round!");
+      console.log(`Your score: ${playerScore}`);
+      console.log(`Computer's score: ${computerScore}`);
+    } else {
+      console.log("No change in score");
+    }
+  };
+
+    if (playerScore == 5 || playerScore > computerScore) {
+      return "Winner!";
+    } else if (computerScore == 5 || computerScore > playerScore) {
+      return "Loser!";
+    } else {
+      return "Tie!";
+    }
+};
+/*
+===============================================================================Test in console - The struggle, had to end up declaring two global variables (win, lose) so they could be referenced to be increased.
+Success! - in the console, inputting game(); will prompt for choice, tell you if you won/lost round, list new score of you and computer, tell you if you won/lost at the end of the 5 games.
+===============================================================================Project Complete!
+*/
+
