@@ -99,26 +99,25 @@ Ps:
 code:*/
 
 function playRound(playerSelection, computerSelection) {
-  let win = "Win!"
-  let lose = "Lose!"
-  let tied = "Tied!"
   playerSelection = prompt("Please enter: rock, paper, or scissors");
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerPlay(); 
+  let win = `Win! ${playerSelection} beats ${computerSelection}`;
+  let lose = `Lose! ${computerSelection} beats ${playerSelection}`;
+  let tied = "Tied!";
   if (playerSelection == computerSelection) {
     return `${tied}`;
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
-    return `${win} ${playerSelection} beats ${computerSelection}`;
+    return win;
   } else if (playerSelection == "rock" && computerSelection == "paper") {
-    return `${lose} ${computerSelection} beats ${playerSelection}`;
+    return lose;
   } else if (playerSelection == "scissors" && computerSelection == "rock") {
-    return `${lose} ${computerSelection} beats ${playerSelection}`;
-  } else if (playerSelection == "scissors" && computerSelection == "paper") {
-    return `${win} ${playerSelection} beats ${computerSelection}`;
+    return lose;
+  } else if (playerSelection == "scissors" && computerSelection == "paper") {	   return win; 
   } else if (playerSelection == "paper" && computerSelection == "scissors") {
-    return `${lose} ${computerSelection} beats ${playerSelection}`;
+    return lose; 
   } else if (playerSelection == "paper" && computerSelection == "rock") {
-    return `${win} ${playerSelection} beats ${computerSelection}`;
+    return win;
   } else {
     return "Please select rock, paper, or scissors!";
   }
@@ -178,6 +177,6 @@ within for loop:
   create variable playerScore
   create variable computerScore
   playRound()
-  
+  if 
 
 */
