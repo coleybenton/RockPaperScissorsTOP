@@ -91,7 +91,50 @@ Pl: Okay so we're going create the function and call it playRound. It will take 
 
 
 Ps:
+- create function playRound w/ parameters (playerSelection, computerSelection)
+- inside function: playerSelection equals toLowerCase (prompt with placeholder string "Please enter: rock, paper, or scissors")
+- switch statement (playerSelection, computerSelection)
+  - case (rock, rock || paper, paper || scissors, scissors): return "tied" break;
+  - case (rock, paper): return "Lose! Paper beats rock" break;
+  - case (rock, scissors): return "Win! Rock beats scissors" break;
+  - case (paper, rock): return "Win! Paper beats rock" break;
+  - case (paper, scissors): return "Lose! Scissors beats paper" break;
+  - case (scissors, rock): return "Lose! Rock beats scissors" break;
+  - case (scissors, paper): return "Win! Scissors beats paper" break;
+  - default: return "Please enter rock, paper, or scissors!" break;
 
 
+code:*/
 
-*/
+function playRound(playerSelection, computerSelection) {
+  playerSelection = toLowerCase(prompt("Please enter: rock, paper, or scissors"));
+  switch (playerSelection, computerSelection) {
+    case (rock, rock || paper, paper || scissors, scissors):
+      return "tied" 
+      break;
+    case (rock, paper): 
+      return "Lose! Paper beats rock" 
+      break;
+    case (rock, scissors): 
+      return "Win! Rock beats scissors" 
+      break;
+    case (paper, rock): 
+      return "Win! Paper beats rock" 
+      break;
+    case (paper, scissors): 
+      return "Lose! Scissors beats paper" 
+      break;
+    case (scissors, rock): 
+      return "Lose! Rock beats scissors" 
+      break;
+    case (scissors, paper): 
+      return "Win! Scissors beats paper" 
+      break;
+    default: 
+      return "Please enter rock, paper, or scissors!"
+      break; 
+  }
+};
+/*
+========================================================================
+test in console:
