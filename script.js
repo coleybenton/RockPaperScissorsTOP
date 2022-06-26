@@ -1,4 +1,4 @@
-/* JS code - Problem Solving method - Restate the Problem, Plan, Pseudocode
+/* JS code - Problem Solving method - Restate the Problem (RP), Plan (Pl), Pseudocode (Ps)
 
 -------------------------------------------------------------------------
 
@@ -162,6 +162,6 @@ Referenced computerPlay() function within playRound() by assigning to computerSe
 Now we don't have to type parameters
 ===============================================================================
 
-Step 3:
+Step 3: Write a NEW function called game(). Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end. 
 
 */
