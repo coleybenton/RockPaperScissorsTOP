@@ -150,4 +150,11 @@ test success - computerPlay() function does not feed into playRound()...duh
   - received intended output "Tied!"
 - attempting PAPER with "sciSsOrS" - error
   - received else output instead of intended...
+  - computerSelection output will always be correct b/c of other function
+  - bad test
+- attempting PAPER with "scissors" - success
+- attempting house with "scissors" - success
+
+tests success - playRound() outputs corresponding outputs as intended.
+Tested other outcomes just to be safe - success! 
 */
