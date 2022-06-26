@@ -99,7 +99,8 @@ Ps:
 code:*/
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = prompt("Please enter: rock, paper, or scissors").toLowerCase();
+  playerSelection = prompt("Please enter: rock, paper, or scissors");
+  playerSelection = playerSelection.toLowerCase();
   if (playerSelection == computerSelection) {
     return "Tied!";
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
@@ -138,3 +139,15 @@ rerunning tests
 test error default returned
 replacing switch statement with if/else statements
 rerunning tests
+
+test error else script runs instead of intended if/else if script
+assigned playerSelection to result of method
+rerunning tests
+
+test success - computerPlay() function does not feed into playRound()...duh
+- received intended output "Lose! paper beats rock" when inputting "rock" into prompt and setting computerSelection parameter to "paper" - console.log(playRound("", "paper"));
+- attempting Rock with "rock" computerSelection parameter - success!
+  - received intended output "Tied!"
+- attempting PAPER with "sciSsOrS" - error
+  - received else output instead of intended...
+*/
