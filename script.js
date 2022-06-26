@@ -107,34 +107,46 @@ Ps:
 code:*/
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = toLowerCase(prompt("Please enter: rock, paper, or scissors"));
+  playerSelection = prompt("Please enter: rock, paper, or scissors").toLowerCase();
   switch (playerSelection, computerSelection) {
-    case (rock, rock || paper, paper || scissors, scissors):
-      return "tied" 
+    case ("rock", "rock" || "paper", "paper" || "scissors", "scissors"):
+      return "tied"; 
       break;
-    case (rock, paper): 
-      return "Lose! Paper beats rock" 
+    case ("rock", "paper"): 
+      return "Lose! Paper beats rock"; 
       break;
-    case (rock, scissors): 
-      return "Win! Rock beats scissors" 
+    case ("rock", "scissors"): 
+      return "Win! Rock beats scissors"; 
       break;
-    case (paper, rock): 
-      return "Win! Paper beats rock" 
+    case ("paper", "rock"): 
+      return "Win! Paper beats rock";
       break;
-    case (paper, scissors): 
-      return "Lose! Scissors beats paper" 
+    case ("paper", "scissors"): 
+      return "Lose! Scissors beats paper"; 
       break;
-    case (scissors, rock): 
-      return "Lose! Rock beats scissors" 
+    case ("scissors", "rock"): 
+      return "Lose! Rock beats scissors"; 
       break;
-    case (scissors, paper): 
-      return "Win! Scissors beats paper" 
+    case ("scissors", "paper"): 
+      return "Win! Scissors beats paper"; 
       break;
     default: 
-      return "Please enter rock, paper, or scissors!"
+      return "Please enter rock, paper, or scissors!";
       break; 
   }
 };
 /*
 ========================================================================
-test in console:
+test in console: 
+console.log(computerPlay());
+console.log(playRound());
+entering in rock, Rock, PAPER, and house into prompt
+
+test error toLowerCase is not defined
+researched proper usage, updating code
+rerunning tests
+
+test error rock is not defined
+updating switch and case to be strings 
+put semicolons for case codes
+rerunning tests
