@@ -98,11 +98,11 @@ function game(e) {
  *
  * JS code - Problem Solving method - Restate the Problem (RP), Plan (Pl), Pseudocode (Ps)
 
--------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /* Step 1: Your game is going to play against the computer, so begin with a function called computerPlay that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. We’ll use this function in the game to make the computer’s play. Tip: use the console to make sure this is returning the expected output before moving to the next step!
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 RP: Let's create our opponent by making a function called "computerPlay": this function does not need parameters and it will only return 1 out of 3 possible choices by a random selection (rock, paper, scissors).
 
@@ -130,8 +130,40 @@ Ps:
 
 - else return "scissors"
 
+<<<<<<< HEAD
 ------------------------------------------------------------------------
 =========================================================================
+=======
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+code: */
+
+ 
+
+function computerPlay() {
+
+  let randomNumber = Math.floor(Math.random()*10);
+
+    if (randomNumber < 3) {
+
+      return "rock";
+
+    } else if (randomNumber > 3 && randomNumber < 7) {
+
+      return "paper";
+
+    } else {
+
+      return "scissors";
+
+    }
+
+};
+
+/*
+
+===========================================================================================================================================================
+>>>>>>> 16cd09f7294a8d7665b20a7424da2a516559c82d
 
 test in console: console.log(computerPlay());
 
@@ -145,13 +177,13 @@ test2 in console: console.log(computerPlay());
 
 test success! rock, paper, and scissors strings are randomly generated when function runs
 
-=========================================================================
+===========================================================================================================================================================
 
 Step 2: Write a function that plays a single round of Rock Paper Scissors. The function should take two parameters - the playerSelection and computerSelection - and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
 
 Make your function’s playerSelection parameter case-insensitive (so users can input rock, ROCK, RocK or any other variation).
 
------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 RP: Create a function for a single round of our game that takes two parameters (playerSelection, computerSelection) and returns a string " and why "You Lose! Paper beats Rock". Parameter playerSelection has to be case-insensitive too.
 
@@ -167,7 +199,42 @@ Ps:
 - if else statements for each outcome 
 
 
+<<<<<<< HEAD
 ========================================================================
+=======
+code: added win and lose as global variables for later reference in game() function */
+let win;
+let lose;
+
+function playRound(playerSelection, computerSelection) {
+  playerSelection = prompt("Please enter: rock, paper, or scissors");
+  playerSelection = playerSelection.toLowerCase();
+  computerSelection = computerPlay();
+  win = `Win! ${playerSelection} beats ${computerSelection}`;
+  lose = `Lose! ${computerSelection} beats ${playerSelection}`;
+  let tied = "Tied!";
+  if (playerSelection == computerSelection) {
+    return `${tied}`;
+  } else if (playerSelection == "rock" && computerSelection == "scissors") {
+    return win;
+  } else if (playerSelection == "rock" && computerSelection == "paper") {
+    return lose;
+  } else if (playerSelection == "scissors" && computerSelection == "rock") {
+    return lose;
+  } else if (playerSelection == "scissors" && computerSelection == "paper") {
+    return win; 
+  } else if (playerSelection == "paper" && computerSelection == "scissors") {
+    return lose; 
+  } else if (playerSelection == "paper" && computerSelection == "rock") {
+    return win;
+  } else {
+    return "Please select rock, paper, or scissors!";
+  }
+};
+
+/*
+===========================================================================================================================================================
+>>>>>>> 16cd09f7294a8d7665b20a7424da2a516559c82d
 test in console: 
 console.log(computerPlay());
 console.log(playRound());
@@ -205,7 +272,7 @@ Tests success - playRound() outputs corresponding outputs as intended.
 Tested other outcomes just to be safe - success! 
 Referenced computerPlay() function within playRound() by assigning to computerSelection
 Now we don't have to type parameters
-===============================================================================
+===========================================================================================================================================================
 
 Step 3: Write a NEW function called game(). Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end. 
 
@@ -227,9 +294,45 @@ close for loop
 within game: if statement, increments score based on result & displays score every turn
 
 
+<<<<<<< HEAD
 ===============================================================================Test in console - The struggle, had to end up declaring two global variables (win, lose) so they could be referenced to be increased.
 Success! - in the console, inputting game(); will prompt for choice, tell you if you won/lost round, list new score of you and computer, tell you if you won/lost at the end of the 5 games.
 ===============================================================================Project Complete!
+=======
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+
+  for (let i = 0; i < 5; i++) {
+    let result = playRound();
+    if (result == win) {
+      playerScore++;
+      console.log("You won this round!");
+      console.log(`Your score: ${playerScore}`);
+      console.log(`Computer's score: ${computerScore}`);
+    } else if (result == lose) {
+      computerScore++;
+      console.log("You lost this round!");
+      console.log(`Your score: ${playerScore}`);
+      console.log(`Computer's score: ${computerScore}`);
+    } else {
+      console.log("No change in score");
+    }
+  };
+
+    if (playerScore == 5 || playerScore > computerScore) {
+      return "Winner!";
+    } else if (computerScore == 5 || computerScore > playerScore) {
+      return "Loser!";
+    } else {
+      return "Tie!";
+    }
+};
+/*
+===========================================================================================================================================================- Test in console - The struggle, had to end up declaring two global variables (win, lose) so they could be referenced to be increased.
+- Success! - in the console, inputting game(); will prompt for choice, tell you if you won/lost round, list new score of you and computer, tell you if you won/lost at the end of the 5 games.
+===========================================================================================================================================================Project Complete!
+>>>>>>> 16cd09f7294a8d7665b20a7424da2a516559c82d
 */
 
 
