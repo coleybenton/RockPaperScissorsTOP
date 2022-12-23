@@ -1,4 +1,102 @@
-/* JS code - Problem Solving method - Restate the Problem (RP), Plan (Pl), Pseudocode (Ps)
+function computerPlay() {
+
+    let randomNumber = Math.floor(Math.random()*10);
+
+    if (randomNumber < 3) {
+
+      return "rock";
+
+    } else if (randomNumber > 3 && randomNumber < 7) {
+
+      return "paper";
+
+    } else {
+
+      return "scissors";
+
+    }
+
+  };
+
+
+  const resultsDiv = document.querySelector("#results-div");
+  const rockButton = document.querySelector("#rock-button");
+  const paperButton = document.querySelector("#paper-button");
+  const scissorsButton = document.querySelector("#scissors-button");
+
+ 
+
+  let win;
+  let lose;
+  let tied; 
+  
+  function playRound(playerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    let computerSelection = computerPlay();
+    win = `Win! ${playerSelection} beats ${computerSelection}`;
+    lose = `Lose! ${computerSelection} beats ${playerSelection}`;
+    tied = "Tied!";
+    if (playerSelection == computerSelection) {
+      return tied;
+    } else if (playerSelection == "rock" && computerSelection == "scissors") {   return win;
+          
+    } else if (playerSelection == "rock" && computerSelection == "paper") {
+      return lose;
+          
+    } else if (playerSelection == "scissors" && computerSelection == "rock") {
+      return lose;
+      
+    } else if (playerSelection == "scissors" && computerSelection == "paper") {
+      return win; 
+      
+    } else if (playerSelection == "paper" && computerSelection == "scissors") {
+      return lose; 
+     
+    } else if (playerSelection == "paper" && computerSelection == "rock") {
+      return win;
+    };
+    	  
+  };
+
+let playerScore = 0;
+let computerScore = 0;
+
+function game(e) {
+  let result = playRound(e.currentTarget.playerSelection);
+  if (result == win && playerScore < 5 && computerScore < 5) {
+      playerScore++;    
+      resultsDiv.textContent = `You won this round! Your score: ${playerScore}. Computer's score: ${computerScore}`;
+    } else if (result == lose && playerScore < 5 && computerScore < 5) {
+      computerScore++;
+      resultsDiv.textContent = `You lost this round! Your score: ${playerScore}. Computer's score: ${computerScore}`;
+    } else if (result == tied && playerScore < 5 && computerScore < 5){
+      resultsDiv.textContent = `No change in score. Your score: ${playerScore}. Computer's score: ${computerScore}`;
+    };
+  
+  tieIf: if (computerScore == 5 && playerScore == 5) {
+        resultsDiv.textContent = "Game Over - You Tied! Refresh the page to play again!";
+        break tieIf;
+  };
+  winnerIf: if (computerScore < 5 && playerScore == 5) {
+        resultsDiv.textContent = "Game Over - You Won! Refresh the page to play again!";
+	break winnerIf;
+    }; 
+  loserIf: if (computerScore == 5 && playerScore < 5) {
+        resultsDiv.textContent = "Game Over - You Lost! - Refresh the page to play again!";
+	break loserIf;
+    };
+    
+};  
+
+  rockButton.addEventListener("click", game);
+  paperButton.addEventListener("click", game);
+  scissorsButton.addEventListener("click", game);
+  rockButton.playerSelection = "rock";
+  paperButton.playerSelection = "paper";
+  scissorsButton.playerSelection = "scissors";
+/* Notes:
+ *
+ * JS code - Problem Solving method - Restate the Problem (RP), Plan (Pl), Pseudocode (Ps)
 
 -------------------------------------------------------------------------
 
@@ -33,33 +131,6 @@ Ps:
 - else return "scissors"
 
 ------------------------------------------------------------------------
-
-code: */
-
- 
-
-function computerPlay() {
-
-  let randomNumber = Math.floor(Math.random()*10);
-
-    if (randomNumber < 3) {
-
-      return "rock";
-
-    } else if (randomNumber > 3 && randomNumber < 7) {
-
-      return "paper";
-
-    } else {
-
-      return "scissors";
-
-    }
-
-};
-
-/*
-
 =========================================================================
 
 test in console: console.log(computerPlay());
@@ -96,37 +167,6 @@ Ps:
 - if else statements for each outcome 
 
 
-code: */
-let win;
-let lose;
-
-function playRound(playerSelection, computerSelection) {
-  playerSelection = prompt("Please enter: rock, paper, or scissors");
-  playerSelection = playerSelection.toLowerCase();
-  computerSelection = computerPlay();
-  win = `Win! ${playerSelection} beats ${computerSelection}`;
-  lose = `Lose! ${computerSelection} beats ${playerSelection}`;
-  let tied = "Tied!";
-  if (playerSelection == computerSelection) {
-    return `${tied}`;
-  } else if (playerSelection == "rock" && computerSelection == "scissors") {
-    return win;
-  } else if (playerSelection == "rock" && computerSelection == "paper") {
-    return lose;
-  } else if (playerSelection == "scissors" && computerSelection == "rock") {
-    return lose;
-  } else if (playerSelection == "scissors" && computerSelection == "paper") {
-    return win; 
-  } else if (playerSelection == "paper" && computerSelection == "scissors") {
-    return lose; 
-  } else if (playerSelection == "paper" && computerSelection == "rock") {
-    return win;
-  } else {
-    return "Please select rock, paper, or scissors!";
-  }
-};
-
-/*
 ========================================================================
 test in console: 
 console.log(computerPlay());
@@ -186,41 +226,10 @@ within for loop:
 close for loop
 within game: if statement, increments score based on result & displays score every turn
 
-code:
-*/
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-
-  for (let i = 0; i < 5; i++) {
-    let result = playRound();
-    if (result == win) {
-      playerScore++;
-      console.log("You won this round!");
-      console.log(`Your score: ${playerScore}`);
-      console.log(`Computer's score: ${computerScore}`);
-    } else if (result == lose) {
-      computerScore++;
-      console.log("You lost this round!");
-      console.log(`Your score: ${playerScore}`);
-      console.log(`Computer's score: ${computerScore}`);
-    } else {
-      console.log("No change in score");
-    }
-  };
-
-    if (playerScore == 5 || playerScore > computerScore) {
-      return "Winner!";
-    } else if (computerScore == 5 || computerScore > playerScore) {
-      return "Loser!";
-    } else {
-      return "Tie!";
-    }
-};
-/*
 ===============================================================================Test in console - The struggle, had to end up declaring two global variables (win, lose) so they could be referenced to be increased.
 Success! - in the console, inputting game(); will prompt for choice, tell you if you won/lost round, list new score of you and computer, tell you if you won/lost at the end of the 5 games.
 ===============================================================================Project Complete!
 */
+
 
