@@ -136,7 +136,7 @@ Ps:
 =======
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-code: */
+code: 
 
  
 
@@ -202,7 +202,7 @@ Ps:
 <<<<<<< HEAD
 ========================================================================
 =======
-code: added win and lose as global variables for later reference in game() function */
+code: added win and lose as global variables for later reference in game() function 
 let win;
 let lose;
 
